@@ -1,0 +1,69 @@
+---
+layout: default
+---
+{% assign index = true %}
+<section id="hero" class="container"> <!-- Index page only - the latest post hero banner -->
+	{% for firstpost in paginator.posts limit:1 %}
+		<section class="row">
+			<article class="six">
+				{% if index %}
+					<h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
+				{% else %}
+					<h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+				{% endif %}
+				{% unless page.meta == false %}
+					<p class="meta">
+						{% include post/date.html %}{{ time }}
+						{% if site.disqus_short_name and page.comments != false and post.comments != false and site.disqus_show_comment_count == true %}
+						| <a href="{% if index %}{{ root_url }}{{ post.url }}{% endif %}#disqus_thread"
+						data-disqus-identifier="{% if post.meta.disqus_id %}{{ post.meta.disqus_id }}{% else %}{{ site.url }}{{ post.url }}{% endif %}">Comments</a>
+						{% endif %}
+					</p>
+				{% endunless %}
+				{% if index %}
+					<div class="entry-content">{{ content | excerpt }}</div>
+					{% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
+					{% if excerpted == 'true' %}
+					<p class="read-more">
+						<a rel="full-article" href="{{ root_url }}{{ post.url }}">{{ site.excerpt_link }}</a>
+					</p>
+					{% endif %}
+				{% else %}
+					<div class="entry-content">{{ content }}</div>
+				{% endif %}
+			</article>
+		</section>
+	{% endfor %}
+</section>
+
+<!-- Main article list -->
+<section id="main-container" class="container">
+	<div class="row">
+		<article class="eight">
+			{% for post in paginator.posts offset:1 %}
+	  			{% assign content = post.content %}
+	  			{% include article.html %}
+	  		{% endfor %}
+		</article>
+	</div>
+	<div class="row">
+		<div class="twelve centered-text">
+			{% if paginator.next_page %}
+				<a class="prev" href="{{paginator.next_page}}">&larr; Previous</a> &nbsp;
+			{% endif %}
+				<a href="/blog/archives">Archives</a>&nbsp;
+			{% if paginator.previous_page %}
+				<a class="next" href="{{paginator.previous_page}}">Next &rarr;</a>
+			{% endif %}
+		</div>
+	</div>
+	
+	<!-- Use config files to insert sidebars -->
+	<aside class="sidebar">
+	  {% if site.blog_index_asides.size %}
+	    {% include_array blog_index_asides %}
+	  {% else %}
+	    {% include_array default_asides %}
+	  {% endif %}
+	</aside>
+</section>

@@ -1,0 +1,8 @@
+{% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
+{% include head.html %}
+<body>
+	{% include header.html %} <!-- Header includes navigation -->
+  <div id="main">
+    {{ content | expand_urls: root_url }}
+  </div>
+  {% include footer.html %}
