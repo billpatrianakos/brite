@@ -1,0 +1,230 @@
+/*:::: Main Stylesheet ::::*/
+
+@import "compass";
+@import "grid"; 						// Grid system
+@import "colors"; 						// Site-wide colors
+@import "mixins"; 						// Mixins
+@import "normalize"; 					// CSS reset
+@import "type"; 						// Typography
+@import "font-awesome/font-awesome"; 	// Iconography
+@import "forms"; 						// Form styles
+@import "code"; 						// Code highlighting
+
+/*:::: YOUR STYLES HERE ::::*/
+
+header {
+	background: $green;
+	padding-top: 7px;
+	border-top: 2px solid darken($green, 5%);
+	form {
+		margin-top: 7px;
+		float: right;
+		input[type=text] {
+			background: lighten($green, 15%);
+			border: 1px solid darken($green, 3%);
+			@include border-radius(2px);
+		}
+		input[type=submit] {
+			color: white;
+			background: darken($green, 15%);
+			border: 1px solid $green;
+			@include border-radius(2px);
+		}
+	}
+	h1, h2, h3, h4, h5, h6, p, a {
+		color: white;
+	}
+	h1 {
+		float: left;
+		font-size: 24px;
+	}
+	nav {
+		ul {
+			float: left;
+			margin-top: 3px;
+			li {
+				display: inline;
+				margin-right: 10px;
+				a {
+					color: white;
+					&:visited {
+						color: darken(white, 5%);
+					}
+					&:hover {
+						color: $orange;
+					}
+				}
+			}
+		}
+	}
+}
+
+#hero {
+	padding: 40px 0;
+	background: $offwhite;
+	h1 {
+		a {
+			color: $blue;
+			&:hover {
+				color: $green;
+			}
+		}
+		&.entry-title {
+			margin-bottom: 10px;
+		}
+	}
+	p {
+		font-size: 18px;
+		line-height: 1.75em;
+		margin: 0;
+		top: 0;
+		img {
+			border: 5px solid white;
+		}
+		&.meta {
+			font-style: italic;
+		}
+		&.read-more {
+			a, a:visited {
+				padding: 5px 40px;
+				margin: 10px 0;
+				display: inline-block;
+				@include border-radius(3px);
+				background: transparent;
+				border: 2px solid $blue;
+				color: $blue;
+				text-transform: capitalize;
+			}
+		}
+	}
+	.excerpt {
+		display: block;
+		display: -webkit-box;
+		max-width: 547px;
+		height: 18*1.75*3;
+		margin: 0 auto;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+#main-container {
+	padding: 40px 0;
+	.entry {
+		.entry-title {
+			margin-bottom: 8px;
+		}
+		.meta {
+			margin-top: 0;
+			font-style: italic;
+			time {
+				color: $black;
+				font-size: 75%;
+			}
+		}
+	}
+	.entry-content {
+		p {
+			font-size: 18px;
+			line-height: 1.75em;
+			code {
+				font-family: 'Source code pro', Monaco, monospace;
+				padding: 3px;
+				background: $offwhite;
+				color: $black;
+				border: 1px solid darken($offwhite, 5%);
+				@include border-radius(2px);
+			}
+			a {
+				color: $green;
+				&:hover {
+					color: $orange;
+				}
+				&:visited {
+					color: $blue;
+				}
+			}
+		}
+	}
+	.read-more {
+		a, a:visited {
+			color: $blue;
+			border: 2px solid $blue;
+			@include border-radius(3px);
+			padding: 5px 40px;
+			margin: 10px 0;
+			margin-bottom: 20px;
+			display: inline-block;
+			text-transform: capitalize;
+			&:hover {
+				background: $blue;
+				color: white;
+			}
+		}
+	}
+	.pagination {
+		p {
+			a, a:visited {
+				font-weight: 700;
+				color: $blue;
+			}
+		}
+	}
+}
+
+footer {
+	background: $blue;
+	p {
+		color: $white;
+		top: 0;
+		a, a:visited {
+			color: $white;
+		}
+	}
+	ul {
+		&.nav {
+			float: right;
+			margin: 0;
+			padding: 0;
+			li {
+				display: inline;
+				font-family: $text-font;
+				font-size: 16px;
+				a, a:visited {
+					color: $white;
+					&:hover {
+						color: $orange;
+					}
+				}
+			}
+		}
+	}
+	&.promos {
+		background: darken($blue, 5%);
+		padding: 15px 0;
+		margin-top: 20px;
+		ul {
+			padding: 0;
+			margin: 0;
+			top: 0;
+			li {
+				display: inline;
+				margin: 0;
+				padding: 0;
+				a, a:visited {
+					text-decoration: none;
+					img {
+						width: 377px;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*:::: No styles below this line ::::*/
+@import "helpers"; 						// Helper classes
+@import "mobile"; 						// Media queries for mobile
+@import "print"; 						// Print styles

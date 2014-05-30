@@ -3,7 +3,8 @@ layout: default
 ---
 {% assign index = true %}
 <section id="hero" class="container"> <!-- Index page only - the latest post hero banner -->
-	{% for firstpost in paginator.posts limit:1 %}
+	{% for post in paginator.posts limit:1 %}
+	{% assign content = post.content %}
 		<section class="row">
 			<article class="six">
 				{% if index %}
@@ -21,7 +22,7 @@ layout: default
 					</p>
 				{% endunless %}
 				{% if index %}
-					<div class="entry-content">{{ content | excerpt }}</div>
+					<div class="entry-content excerpt">{{ content | excerpt }}</div>
 					{% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
 					{% if excerpted == 'true' %}
 					<p class="read-more">
@@ -30,6 +31,17 @@ layout: default
 					{% endif %}
 				{% else %}
 					<div class="entry-content">{{ content }}</div>
+				{% endif %}
+			</article>
+			<article class="six last">
+				{% if post.featured_image %}
+				<p class="centered-text">
+					<img src="{{ post.featured_image }}" />
+				</p>
+				{% else %}
+				<p class="centered-text">
+					<img src="/img/design/default_featured.png" />
+				</p>
 				{% endif %}
 			</article>
 		</section>
@@ -45,25 +57,34 @@ layout: default
 	  			{% include article.html %}
 	  		{% endfor %}
 		</article>
+		<!-- Use config files to insert sidebars -->
+		<aside class="four last">
+			{% if site.blog_index_asides.size %}
+			{% include_array blog_index_asides %}
+			{% else %}
+			{% include_array default_asides %}
+			{% endif %}
+		</aside>
 	</div>
 	<div class="row">
-		<div class="twelve centered-text">
-			{% if paginator.next_page %}
-				<a class="prev" href="{{paginator.next_page}}">&larr; Previous</a> &nbsp;
-			{% endif %}
-				<a href="/blog/archives">Archives</a>&nbsp;
-			{% if paginator.previous_page %}
-				<a class="next" href="{{paginator.previous_page}}">Next &rarr;</a>
-			{% endif %}
+		<div class="four pagination">
+			<p>
+				{% if paginator.next_page %}
+					<a class="prev" href="{{paginator.next_page}}">&laquo; Previous</a>
+				{% endif %}
+			</p>
+		</div>
+		<div class="four pagination">
+			<p class="centered-text">
+				<a href="/blog/archives">Archives</a>
+			</p>
+		</div>
+		<div class="four pagination last right">
+			<p>
+				{% if paginator.previous_page %}
+					<a class="next" href="{{paginator.previous_page}}">Next &raquo;</a>
+				{% endif %}
+			</p>
 		</div>
 	</div>
-	
-	<!-- Use config files to insert sidebars -->
-	<aside class="sidebar">
-	  {% if site.blog_index_asides.size %}
-	    {% include_array blog_index_asides %}
-	  {% else %}
-	    {% include_array default_asides %}
-	  {% endif %}
-	</aside>
 </section>
