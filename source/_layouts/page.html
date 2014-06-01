@@ -6,18 +6,15 @@ layout: default
   <section class="row">
     <article class="eight">
       {% if page.title %}
-  <header>
     <h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
-      {% if page.date %}<p class="meta">{% include post/date.html %}{{ time }}</p>{% endif %}
-    </header>
+      {% if page.date %}<p class="meta">{% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}</p>{% endif %}
     {% endif %}
-    {{ content }}
+    <div class="entry-content">{{ content }}</div>
     {% unless page.footer == false %}
       <div class="author-info">
         {% if page.date or page.author %}
         <p class="meta">
           {% if page.author %}{% include post/author.html %}{% endif %}
-          {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
           {% if page.categories %}{% include post/categories.html %}{% endif %}
         </p>
         {% endif %}
@@ -29,11 +26,11 @@ layout: default
     {% if site.disqus_short_name and page.comments == true %}
       <section class="comments">
         <h4>Comments</h4>
-        <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}</div>
+        <div id="disqus_thread" aria-live="polite">{% include post/disqus_thread.html %}{% include disqus.html %}</div>
       </section>
     {% endif %}
     </article>
-    <aside class="four last">
+    <aside id="sidebar" class="four last">
       {% unless page.sidebar == false %}
         {% if site.page_asides.size %}
           {% include_array page_asides %}

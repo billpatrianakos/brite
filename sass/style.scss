@@ -23,12 +23,16 @@ header {
 			background: lighten($green, 15%);
 			border: 1px solid darken($green, 3%);
 			@include border-radius(2px);
+			padding: 4px;
 		}
 		input[type=submit] {
 			color: white;
 			background: darken($green, 15%);
 			border: 1px solid $green;
 			@include border-radius(2px);
+			font-family: $text-font;
+			font-size: 13px;
+			padding: 4px 10px;
 		}
 	}
 	h1, h2, h3, h4, h5, h6, p, a {
@@ -37,6 +41,12 @@ header {
 	h1 {
 		float: left;
 		font-size: 24px;
+		a, a:visited {
+			color: white;
+			&:hover {
+				color: $offwhite;
+			}
+		}
 	}
 	nav {
 		ul {
@@ -115,6 +125,15 @@ header {
 	.entry {
 		.entry-title {
 			margin-bottom: 8px;
+			a {
+				color: $blue;
+				&:visited {
+					color: $green;
+				}
+				&:hover {
+					color: $orange;
+				}
+			}
 		}
 		.meta {
 			margin-top: 0;
@@ -126,9 +145,29 @@ header {
 		}
 	}
 	.entry-content {
+		// Breaks code blocks
+		/*table {
+			width: 100%;
+			font-family: $text-font;
+			font-size: 16px;
+			border: 1px solid darken($offwhite, 3%);
+			tr {
+				td {
+					padding: 5px;
+					border: 1px solid darken($offwhite, 3%);
+					background: darken(white, 3%);
+				}
+			}
+		}*/
 		p {
 			font-size: 18px;
 			line-height: 1.75em;
+			img {
+				text-align: center;
+				border: 5px solid $offwhite;
+				@include box-sizing(border-box);
+				@include box-shadow(0 0 2px $black);
+			}
 			code {
 				font-family: 'Source code pro', Monaco, monospace;
 				padding: 3px;
@@ -149,7 +188,7 @@ header {
 		}
 	}
 	.read-more {
-		a, a:visited {
+		a {
 			color: $blue;
 			border: 2px solid $blue;
 			@include border-radius(3px);
@@ -158,6 +197,14 @@ header {
 			margin-bottom: 20px;
 			display: inline-block;
 			text-transform: capitalize;
+			&:visited {
+				color: $green;
+				border: 2px solid $green;
+				&:hover {
+					background: $green;
+					color: white;
+				}
+			}
 			&:hover {
 				background: $blue;
 				color: white;
@@ -169,6 +216,31 @@ header {
 			a, a:visited {
 				font-weight: 700;
 				color: $blue;
+			}
+		}
+	}
+	.comments {
+		display: block;
+		float: left;
+		clear: both;
+		margin-top: 20px;
+		width: 100%;
+	}
+}
+
+#sidebar {
+	section {
+		margin-bottom: 35px;
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		top: 0;
+		&.ads {
+			li {
+				padding: 0;
+				margin: 0;
 			}
 		}
 	}
@@ -188,10 +260,12 @@ footer {
 			float: right;
 			margin: 0;
 			padding: 0;
+			margin-top: 10px;
 			li {
 				display: inline;
 				font-family: $text-font;
-				font-size: 16px;
+				font-size: 14px;
+				margin-right: 7px;
 				a, a:visited {
 					color: $white;
 					&:hover {
@@ -203,7 +277,7 @@ footer {
 	}
 	&.promos {
 		background: darken($blue, 5%);
-		padding: 15px 0;
+		padding: 0;
 		margin-top: 20px;
 		ul {
 			padding: 0;
