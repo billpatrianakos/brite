@@ -1,5 +1,9 @@
 # Brite
 
+__Note:__ This theme currently includes custom links that will most likely only apply to my personal setup. You'll need to make sure you edit the source HTML files - specifically the header, head, and footer files and replace my information with yours. I'm currently working on a new branch that will separate my customizations from the white-label version that will be for anyone to consume. Otherwise this theme is ready for use (for the most part).
+
+![Brite theme in use](https://billpatrianakos.s3.amazonaws.com/blog_posts/brite-screenshot.png, "Brite being used on billpatrianakos.me")
+
 A simple Octopress theme anyone can use. Currently in development and use for [my (Bill Patrianakos) personal website](http://billpatrianakos.me).
 
 ## License
