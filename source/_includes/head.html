@@ -7,17 +7,7 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title>
-		{% if page.title %}
-			{% if site.titlecase %}
-				{{ page.title | titlecase }}
-			{% else %}
-				{{ page.title }}
-			{% endif %}
-		 - 
-		{% endif %}
-		{{ site.title }}
-	</title>
+	<title>{% if page.title %}{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %} - {% endif %}{{ site.title }}</title>
 	{% capture description %}{% if page.description %}{{ page.description }}{% else %}{{ content | raw_content }}{% endif %}{% endcapture %}
 	<meta name="description" content="{{ description | strip_html | condense_spaces | truncate:150 }}">
   	{% if page.keywords %}

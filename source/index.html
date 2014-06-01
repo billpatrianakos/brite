@@ -37,17 +37,19 @@ layout: default
 					<div class="entry-content">{{ content }}</div>
 				{% endif %}
 			</article>
-			<article class="six last">
-				{% if post.featured_image %}
-				<p class="centered-text">
-					<img src="{{ post.featured_image }}" />
-				</p>
-				{% else %}
-				<p class="centered-text">
-					<img src="/img/design/default_featured.png" />
-				</p>
-				{% endif %}
-			</article>
+			<div class="six last">
+				<div class="featured-image">
+					{% if post.featured_image %}
+					<p class="centered-text">
+						<img src="{{ post.featured_image }}" />
+					</p>
+					{% else %}
+					<p class="centered-text">
+						<img src="/img/design/default_featured.png" />
+					</p>
+					{% endif %}
+				</div>
+			</div>
 		</section>
 	{% endfor %}
 </section>

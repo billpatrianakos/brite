@@ -88,9 +88,6 @@ header {
 		line-height: 1.75em;
 		margin: 0;
 		top: 0;
-		img {
-			border: 5px solid white;
-		}
 		&.meta {
 			font-style: italic;
 		}
@@ -117,6 +114,23 @@ header {
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+	// Second column - featured image area
+	// To use the featured image just add a "featured_image: url-to-image.format"
+	// line to your YAML front matter
+	.featured-image {
+		max-height: 214px;
+		overflow: hidden;
+		border: 5px solid white;
+		p {
+			img {
+				display: block;
+				max-width: 100%;
+				height: auto !important;
+				width: auto\9; /* ie8+9 */
+				-ms-interpolation-mode: bicubic;
+			}
+		}
 	}
 }
 
@@ -180,6 +194,9 @@ header {
 				color: $green;
 				&:hover {
 					color: $orange;
+					img {
+						border: 5px solid $green;
+					}
 				}
 				&:visited {
 					color: $blue;
