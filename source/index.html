@@ -9,7 +9,7 @@ layout: default
 			<article class="six">
 				{% if index %}
 					{% if post.external_url %}
-						<h1 class="entry-title"><a href="{ post.external_url }">&infin; {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
+						<h1 class="entry-title"><a href="{{ post.external_url }}">&infin; {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
 					{% else %}
 						<h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
 					{% endif %}
