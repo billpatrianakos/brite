@@ -1,8 +1,6 @@
 # Brite
 
-A simple Octopress theme anyone can use. Currently in development and use for [my (Bill Patrianakos) personal website](http://billpatrianakos.me).
-
-__Note:__ This theme currently includes custom links that will most likely only apply to my personal setup. You'll need to make sure you edit the source HTML files - specifically the header, head, and footer files and replace my information with yours. I'm currently working on a new branch that will separate my customizations from the white-label version that will be for anyone to consume. Otherwise this theme is ready for use (for the most part).
+A simple Octopress theme anyone can use. Currently in use for [my personal website](http://billpatrianakos.me).
 
 ![Brite theme in use](https://billpatrianakos.s3.amazonaws.com/blog_posts/brite-screenshot.png, "Brite being used on billpatrianakos.me")
 
@@ -26,6 +24,22 @@ fonts_dir = "source/font"
 
 4. Install with `rake install[brite]` (in this case `brite` refers to the name of the theme folder - if you've renamed the folder use the new name in the rake command instead)
 5. Now you can install, preview, and publish with `rake generate && rake preview`. Open a browser to [http://localhost:4000](http://localhost:4000) and if everything looks good (you may need to refresh a few times to get rid of cached styles) then run `rake deploy` to publish your site as usual.
+
+## Customizations
+
+Because this theme was developed primarily for myself, there are custom modifications you may want to undo. Future versions of this project will not include these extraneous things.
+
+I recommend making these changes after installation because that's when you'll really see and understand them. Be sure to preview the site locally before deploying to see what I'm talking about. Luckily, for standard Octopress sites (no extra customization in your _config.yml file) these extra assets won't be visible on your site but you probably don't want them in your repository either. So here's how to remove them:
+
+### Custom asides
+
+__Modify__ the `about.html` aside to use your own personal details instead of mine.
+
+__Modify or Delete__ the `google_ads.html` aside so that it either doesn't exist or uses your own Adsense code if you choose to use Adsense.
+
+__Modify or Delete__ the `random_project.html` and `project_ads.html` asides. These asides show an image "poster" ad in the sidebar for one of my projects selected randomly from a list and show a list of my favorite projects respectively. If you choose to keep these, you'll see where the references to images point. For the random ad functionality, see `source/js/scripts.js` to dereference my projects and include your own files instead. If you just want to replace my project ad images, simply replace the files in `source/img/assets` with images of your own of the same name (that way you won't have to modify any JavaScript or HTML).
+
+__Delete__ the `book_form.html` aside. This is the signup form for my book. You can replace this with your own Mailchimp signup for if you want but I suspect most people will want to simply get rid of it.
 
 ## License
 
