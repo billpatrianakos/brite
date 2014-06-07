@@ -297,11 +297,21 @@ header {
 			}
 		}
 		// Specific to the Mailchimp signup form
-		#mc_embed_signup {
+		&.book-form {
+			padding: 15px;
+			@include border-radius(2px);
+			@include box-sizing(brder-box);
+			background: $white;
+			border: 1px solid darken($white, 10%);
 			p {
-				.poweredby {
-					top: 0;
-					margin-top: 0;
+				font-size: 14px;
+			}
+			#mc_embed_signup {
+				p {
+					&.poweredby {
+						top: 0;
+						margin-top: 0;
+					}
 				}
 			}
 		}
