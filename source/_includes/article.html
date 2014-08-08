@@ -2,7 +2,7 @@
   <div class="entry">
     {% if index %}
       {% if post.external_url %}
-        <h1 class="entry-title"><a href="{{ post.external_url }}">&infin; {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
+        <h1 class="entry-title"><a href="{{ post.external_url }}" target="_blank">&infin; {% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
       {% else %}
         <h1 class="entry-title"><a href="{{ root_url }}{{ post.url }}">{% if site.titlecase %}{{ post.title | titlecase }}{% else %}{{ post.title }}{% endif %}</a></h1>
       {% endif %}
@@ -33,7 +33,7 @@
   {{ content }}
   {% if post.external_url %}
     <p class="read-more">
-      <a rel="original-article" href="{{ post.external_url }}">Visit linked content</a>
+      <a rel="original-article" href="{{ post.external_url }}" target="_blank">Visit linked content</a>
     </p>
   {% endif %}
 </div>

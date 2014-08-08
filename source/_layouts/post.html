@@ -15,6 +15,12 @@ single: true
       {% unless page.sharing == false %}
         {% include post/sharing.html %}
       {% endunless %}
+      <!-- For linklog posts -->
+      {% if page.external_url %}
+        <p class="read-more">
+          <a rel="original-article" href="{{ post.external_url }}">Visit linked content</a>
+        </p>
+      {% endif %}
       <p class="meta">
         {% if page.previous.url %}
           <a class="basic-alignment left" href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&laquo; {{page.previous.title}}</a>
